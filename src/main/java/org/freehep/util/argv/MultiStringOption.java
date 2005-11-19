@@ -1,8 +1,8 @@
 // Copyright 2005, FreeHEP.
 package org.freehep.util.argv;
 
-import java.util.*;
-import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A Multiple String option for use with ArgumentParser. This allows for multiple
@@ -10,7 +10,7 @@ import java.io.PrintWriter;
  * a List of Strings.
  *
  * @author Mark Donszelmann
- * @version $Id: src/main/java/org/freehep/util/argv/MultiStringOption.java f7331332881b 2005/11/19 00:04:58 duns $
+ * @version $Id: src/main/java/org/freehep/util/argv/MultiStringOption.java a98adf3dfd10 2005/11/19 07:52:18 duns $
  */
 
 public class MultiStringOption implements Option {

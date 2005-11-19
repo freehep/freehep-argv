@@ -9,8 +9,7 @@
 //package com.charliedog.argv;
 package org.freehep.util.argv;
 
-import java.util.*;
-import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * A Boolean option for use with ArgumentParser. It is false unless the flag is

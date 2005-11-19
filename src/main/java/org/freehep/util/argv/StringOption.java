@@ -9,8 +9,7 @@
 //package com.charliedog.argv;
 package org.freehep.util.argv;
 
-import java.util.*;
-import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * A String option for use with ArgumentParser. A String option may have a default

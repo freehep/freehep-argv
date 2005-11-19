@@ -1,16 +1,24 @@
 // Copyright 2004, FreeHEP.
 package org.freehep.util.argv.test;
 
-import java.io.*;
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
 
-import org.freehep.util.argv.*;
+import org.freehep.util.argv.ArgumentFormatException;
+import org.freehep.util.argv.ArgumentParser;
+import org.freehep.util.argv.BooleanOption;
+import org.freehep.util.argv.DoubleOption;
+import org.freehep.util.argv.IntOption;
+import org.freehep.util.argv.ListParameter;
+import org.freehep.util.argv.MissingArgumentException;
+import org.freehep.util.argv.StringOption;
+import org.freehep.util.argv.StringParameter;
 
 /**
  * Test case for Argv package.
  *
  * @author Mark Donszelmann
- * @version $Id: src/test/java/org/freehep/util/argv/test/ArgvTest.java f7331332881b 2005/11/19 00:04:58 duns $
+ * @version $Id: src/test/java/org/freehep/util/argv/test/ArgvTest.java a98adf3dfd10 2005/11/19 07:52:18 duns $
  */ 
 public class ArgvTest {
 

@@ -1,8 +1,7 @@
 // Copyright 2004, FreeHEP.
 package org.freehep.util.argv;
 
-import java.util.*;
-import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Interface for parameters that may be registered and parsed by the

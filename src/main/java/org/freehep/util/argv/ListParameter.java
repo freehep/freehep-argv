@@ -9,8 +9,9 @@
 //package com.charliedog.argv;
 package org.freehep.util.argv;
 
-import java.util.*;
-import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * A List parameter for use with ArgumentParser. A List parameter consumes all values

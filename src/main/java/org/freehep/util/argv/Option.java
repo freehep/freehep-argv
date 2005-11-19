@@ -9,8 +9,7 @@
 //package com.charliedog.argv;
 package org.freehep.util.argv;
 
-import java.util.*;
-import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Interface for options that may be registered and parsed by the
