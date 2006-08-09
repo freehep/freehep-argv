@@ -2,7 +2,7 @@
   <parent>
     <artifactId>base</artifactId>
     <groupId>org.freehep</groupId>
-    <version>2.0-SNAPSHOT</version>
+    <version>3</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.freehep</groupId>
@@ -10,5 +10,11 @@
   <version>2.0-SNAPSHOT</version>
   <name>FreeHEP ArgV</name>
   <description>FreeHEP Command Line Parsing</description>
-  <dependencies/>
+  <repositories>
+    <repository>
+      <id>freehep-maven</id>
+      <name>Maven FreeHEP</name>
+      <url>http://java.freehep.org/maven2</url>
+    </repository>
+  </repositories>
 </project>
