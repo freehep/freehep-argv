@@ -2,14 +2,14 @@
   <parent>
     <artifactId>base</artifactId>
     <groupId>org.freehep</groupId>
-    <version>3</version>
+    <version>4-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.freehep</groupId>
   <artifactId>freehep-argv</artifactId>
   <version>2.0-SNAPSHOT</version>
   <name>FreeHEP ArgV</name>
-  <description>FreeHEP Command Line Parsing</description>
+  <description>FreeHEP Command Line Argument Parsing</description>
   <repositories>
     <repository>
       <id>freehep-maven</id>
