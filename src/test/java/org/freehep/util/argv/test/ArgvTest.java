@@ -18,7 +18,7 @@ import org.freehep.util.argv.StringParameter;
  * Test case for Argv package.
  *
  * @author Mark Donszelmann
- * @version $Id: src/test/java/org/freehep/util/argv/test/ArgvTest.java a98adf3dfd10 2005/11/19 07:52:18 duns $
+ * @version $Id: src/test/java/org/freehep/util/argv/test/ArgvTest.java 884b160dde5c 2007/03/01 19:38:51 duns $
  */ 
 public class ArgvTest {
 
@@ -47,10 +47,10 @@ public class ArgvTest {
             }
         } catch (MissingArgumentException mae) {
             System.out.println(mae.getMessage());
-            System.exit(0);
+            System.exit(1);
         } catch (ArgumentFormatException afe) {
             System.out.println(afe.getMessage());
-            System.exit(0);
+            System.exit(1);
         }
         
         System.out.println("ArgvTest ok");
