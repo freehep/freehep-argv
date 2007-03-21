@@ -1,4 +1,4 @@
-// Copyright (C) 2001 - 2002 by Oliver Goldman
+// Copyright (C) 2001 - 2007 by Oliver Goldman
 // All Rights Reserved.
 //
 // Redistribution and use in source and binary forms, with or without
