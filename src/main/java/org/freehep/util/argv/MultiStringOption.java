@@ -1,7 +1,7 @@
-// Copyright 2005, FreeHEP.
+// Copyright 2005-2007, FreeHEP.
 package org.freehep.util.argv;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,7 +10,7 @@ import java.util.List;
  * a List of Strings.
  *
  * @author Mark Donszelmann
- * @version $Id: src/main/java/org/freehep/util/argv/MultiStringOption.java a98adf3dfd10 2005/11/19 07:52:18 duns $
+ * @version $Id: src/main/java/org/freehep/util/argv/MultiStringOption.java 3519f271eb09 2007/03/21 21:58:27 duns $
  */
 
 public class MultiStringOption implements Option {
@@ -18,7 +18,7 @@ public class MultiStringOption implements Option {
     private String shortCut;
     private String name;
     private String desc;
-    private List value = Collections.EMPTY_LIST;
+    private List value = new ArrayList();
 
     public MultiStringOption( String flag, String name, String description ) {
         this(flag, null, name, description);
