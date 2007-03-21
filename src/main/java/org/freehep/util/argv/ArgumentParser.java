@@ -132,23 +132,31 @@ public class ArgumentParser {
      * registered with this parser. Returns any arguments not
      * consumed by the parse.
      */
-
     public List parse( String args[] ) throws MissingArgumentException, ArgumentFormatException {
-        List values = Arrays.asList( args );
+        List/*<String>*/ list = Arrays.asList( args );
+        return parse(list);
+    }
+    
+    /**
+     * Parses the given argument list according to all Options
+     * registered with this parser. Returns any arguments not
+     * consumed by the parse.
+     */
+    public List parse( List/*<String>*/ args ) throws MissingArgumentException, ArgumentFormatException {    
 		List extras = new LinkedList();
 
         try {
-    		perValue: while( !values.isEmpty()) {
+    		perValue: while( !args.isEmpty()) {
     			// Give each Option a shot at parsing the list in its
     			// current form. Stop on the first match.
     
                 Iterator i = options.iterator();
                 while( i.hasNext()) {
                     Option opt = (Option)( i.next());
-                    int numArgsConsumed = opt.parse( values );
+                    int numArgsConsumed = opt.parse( args );
     
     				if( numArgsConsumed > 0 ) {
-    					values = values.subList( numArgsConsumed, values.size());
+    					args = args.subList( numArgsConsumed, args.size());
     					continue perValue;
     				}
     			}
@@ -157,8 +165,8 @@ public class ArgumentParser {
     			// list and try again. Don't use values.remove( 0 ) here because
     			// it is an optional method.
     
-    			extras.add( values.get( 0 ));
-    			values = values.subList( 1, values.size());
+    			extras.add( args.get( 0 ));
+    			args = args.subList( 1, args.size());
             }
     
             // now parse the parameters in order
@@ -179,6 +187,7 @@ public class ArgumentParser {
         return extras;
     }
 
+    
     private String pad(String s, int w) {
         if (w < s.length()) return s.substring(0, w);
         
