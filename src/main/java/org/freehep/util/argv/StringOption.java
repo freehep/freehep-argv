@@ -1,4 +1,4 @@
-// Copyright (C) 2001 - 2002 by Oliver Goldman
+// Copyright (C) 2001 - 2007 by Oliver Goldman
 // All Rights Reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@ public class StringOption implements Option {
     private String desc;
     private String defaultValue;
     private String value = null;
+    private boolean bailOut;
 
     /**
      * Initialize a new String argument with the given flag and description but without
@@ -39,12 +40,17 @@ public class StringOption implements Option {
     }
     
     public StringOption( String flag, String shortCut, String name, String defaultValue, String description ) {
+    	this(flag, shortCut, name, defaultValue, description, false);
+    }
+    
+    public StringOption( String flag, String shortCut, String name, String defaultValue, String description, boolean bailOut ) {
         this.flag = flag;
         this.shortCut = shortCut;
         this.name = name;
         this.desc = description;
         this.value = defaultValue;
         this.defaultValue = defaultValue;
+        this.bailOut = bailOut;
     }
 
     /**
@@ -60,13 +66,14 @@ public class StringOption implements Option {
      * Parsing method invoked by ArgumentParser.
      */
 
-    public int parse( List values ) throws MissingArgumentException {
+    public int parse( List values ) throws MissingArgumentException, BailOutException {
         if( values.get( 0 ).equals( flag ) || values.get(0).equals(shortCut)) {
             if( values.size() == 1 ) {
                 throw new MissingArgumentException( flag+": expects '"+name+"' of type <string>" );
             }
 
             value = (String)( values.get( 1 ));
+            if (bailOut) throw new BailOutException();
             return 2;
         }
         return 0;
