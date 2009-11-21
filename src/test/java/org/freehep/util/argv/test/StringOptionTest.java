@@ -7,12 +7,8 @@ import java.util.List;
 import org.freehep.util.argv.ArgumentFormatException;
 import org.freehep.util.argv.ArgumentParser;
 import org.freehep.util.argv.BooleanOption;
-import org.freehep.util.argv.DoubleOption;
-import org.freehep.util.argv.IntOption;
-import org.freehep.util.argv.ListParameter;
 import org.freehep.util.argv.MissingArgumentException;
 import org.freehep.util.argv.StringOption;
-import org.freehep.util.argv.StringParameter;
 
 /**
  * StringOption test.
