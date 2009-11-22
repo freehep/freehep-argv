@@ -27,7 +27,7 @@ public class MultiStringOptionTest {
         parser.add( help );
         parser.add( mso );
 
-        List extra = null;
+        List<String> extra = null;
         try {
             extra = parser.parse( args );
             if (help.getValue()) {
@@ -43,13 +43,13 @@ public class MultiStringOptionTest {
         }
         
         System.out.println("ArgvTest ok");
-        List includes = mso.getValue();
+        List<String> includes = mso.getValue();
         if (includes != null) {
-        	for (Iterator i=includes.iterator(); i.hasNext(); ) {
+        	for (Iterator<String> i=includes.iterator(); i.hasNext(); ) {
                 System.out.println("mso     = "+i.next());        		
         	}
         }
-        for (Iterator i=extra.iterator(); i.hasNext(); ) {
+        for (Iterator<String> i=extra.iterator(); i.hasNext(); ) {
         	System.out.println("Extra: '"+i.next()+"'");
         }
     }

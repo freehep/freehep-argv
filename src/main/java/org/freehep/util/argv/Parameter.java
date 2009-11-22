@@ -1,4 +1,4 @@
-// Copyright 2004, FreeHEP.
+// Copyright 2004-2009, FreeHEP.
 package org.freehep.util.argv;
 
 import java.util.List;
@@ -9,26 +9,25 @@ import java.util.List;
  */
 
 public interface Parameter {
-    /**
-     * Must check  for a parameter.
-     * This method must return the number of arguments belonging 
-     * to this parameter (normally one, but more for lists).
-     *
-     * ArgumentParser.parse( values ) will invoke this method once
-     * for each possible starting position of this parameter
-     * in values.
-     */
+	/**
+	 * Must check for a parameter. This method must return the number of
+	 * arguments belonging to this parameter (normally one, but more for lists).
+	 * 
+	 * ArgumentParser.parse( values ) will invoke this method once for each
+	 * possible starting position of this parameter in values.
+	 */
 
-    public int parse( List values ) throws MissingArgumentException, ArgumentFormatException;
+	public int parse(List<String> values) throws MissingArgumentException,
+			ArgumentFormatException;
 
-    /**
-     * Must return name of the parameter.
-     */
-    public String getName();
+	/**
+	 * Must return name of the parameter.
+	 */
+	public String getName();
 
-    /**
-     * Must return a description of the usage of this parameter.
-     */
+	/**
+	 * Must return a description of the usage of this parameter.
+	 */
 
-    public String getUsage();
+	public String getUsage();
 };

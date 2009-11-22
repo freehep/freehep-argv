@@ -39,7 +39,7 @@ public class ArgvTest {
         parser.add( files);
 
         try {
-            List extra = parser.parse( args );
+            List<String> extra = parser.parse( args );
 
             if( !extra.isEmpty() || help.getValue()) {
                 parser.printUsage( System.out );
@@ -59,7 +59,7 @@ public class ArgvTest {
         System.out.println("page    = "+page.getInt());
         System.out.println("file    = "+file.getValue());
         int n = 0;
-        for (Iterator i=files.getValue().iterator(); i.hasNext(); ) {
+        for (Iterator<String> i=files.getValue().iterator(); i.hasNext(); ) {
             n++;
             System.out.println("files["+n+"] = "+i.next());
         }

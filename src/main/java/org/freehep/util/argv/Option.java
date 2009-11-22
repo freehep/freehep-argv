@@ -17,26 +17,26 @@ import java.util.List;
  */
 
 public interface Option {
-    /**
-     * Must check whether values begins with this option.
-     * If it does, this method must return number of arguments 
-     * belonging to this option. Otherwise, it must return 0.
-     *
-     * ArgumentParser.parse( values ) will invoke this method once
-     * for each possible starting position of this option
-     * in values.
-     */
+	/**
+	 * Must check whether values begins with this option. If it does, this
+	 * method must return number of arguments belonging to this option.
+	 * Otherwise, it must return 0.
+	 * 
+	 * ArgumentParser.parse( values ) will invoke this method once for each
+	 * possible starting position of this option in values.
+	 */
 
-    public int parse( List values ) throws MissingArgumentException, ArgumentFormatException, BailOutException;
+	public int parse(List<String> values) throws MissingArgumentException,
+			ArgumentFormatException, BailOutException;
 
-    /**
-     * Must return the flag and parameters of this option.
-     */
-    public String getOption();
+	/**
+	 * Must return the flag and parameters of this option.
+	 */
+	public String getOption();
 
-    /**
-     * Must return a description of the usage of this option.
-     */
+	/**
+	 * Must return a description of the usage of this option.
+	 */
 
-    public String getUsage();
+	public String getUsage();
 };

@@ -31,7 +31,7 @@ public class StringOptionTest {
         parser.add( so2 );
         parser.add( so3 );
 
-        List extra = null;
+        List<String> extra = null;
         try {
             extra = parser.parse( args );
             if (help.getValue()) {
@@ -50,7 +50,7 @@ public class StringOptionTest {
         System.out.println("so1     = "+so1.getValue());
         System.out.println("so2     = "+so2.getValue());
         System.out.println("so3     = "+so3.getValue());
-        for (Iterator i=extra.iterator(); i.hasNext(); ) {
+        for (Iterator<String> i=extra.iterator(); i.hasNext(); ) {
         	System.out.println("Extra: '"+i.next()+"'");
         }
     }
