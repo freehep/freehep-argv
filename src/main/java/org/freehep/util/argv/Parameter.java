@@ -17,17 +17,17 @@ public interface Parameter {
 	 * possible starting position of this parameter in values.
 	 */
 
-	public int parse(List<String> values) throws MissingArgumentException,
+	int parse(List<String> values) throws MissingArgumentException,
 			ArgumentFormatException;
 
 	/**
 	 * Must return name of the parameter.
 	 */
-	public String getName();
+	String getName();
 
 	/**
 	 * Must return a description of the usage of this parameter.
 	 */
 
-	public String getUsage();
+	String getUsage();
 };

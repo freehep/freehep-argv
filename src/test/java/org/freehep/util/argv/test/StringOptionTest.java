@@ -16,7 +16,10 @@ import org.freehep.util.argv.StringOption;
  * @author Mark Donszelmann
  * @version $Id: src/test/java/org/freehep/util/argv/test/StringOptionTest.java 6f62868b5b67 2007/03/19 17:35:22 duns $
  */ 
-public class StringOptionTest {
+public final class StringOptionTest {
+
+	private StringOptionTest() {
+	}
 
     public static void main(String[] args) {
         BooleanOption help = new BooleanOption("-help", "-h", "Describe command line args", true );

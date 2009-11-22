@@ -20,7 +20,11 @@ import org.freehep.util.argv.StringParameter;
  * @author Mark Donszelmann
  * @version $Id: src/test/java/org/freehep/util/argv/test/ArgvTest.java 884b160dde5c 2007/03/01 19:38:51 duns $
  */ 
-public class ArgvTest {
+public final class ArgvTest {
+	
+	private ArgvTest() {
+		// cannot instantiate
+	}
 
     public static void main(String[] args) {
         BooleanOption help       = new BooleanOption(   "-help",                             "Describe command line args", true );

@@ -26,17 +26,17 @@ public interface Option {
 	 * possible starting position of this option in values.
 	 */
 
-	public int parse(List<String> values) throws MissingArgumentException,
+	int parse(List<String> values) throws MissingArgumentException,
 			ArgumentFormatException, BailOutException;
 
 	/**
 	 * Must return the flag and parameters of this option.
 	 */
-	public String getOption();
+	String getOption();
 
 	/**
 	 * Must return a description of the usage of this option.
 	 */
 
-	public String getUsage();
+	String getUsage();
 };

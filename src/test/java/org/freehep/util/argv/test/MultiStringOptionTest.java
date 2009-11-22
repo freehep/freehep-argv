@@ -16,8 +16,11 @@ import org.freehep.util.argv.MultiStringOption;
  * @author Mark Donszelmann
  * @version $Id: src/test/java/org/freehep/util/argv/test/MultiStringOptionTest.java 3519f271eb09 2007/03/21 21:58:27 duns $
  */ 
-public class MultiStringOptionTest {
+public final class MultiStringOptionTest {
 
+	private MultiStringOptionTest() {
+	}
+	
     public static void main(String[] args) {
         BooleanOption help = new BooleanOption("-help", "-h", "Describe command line args", true );
 

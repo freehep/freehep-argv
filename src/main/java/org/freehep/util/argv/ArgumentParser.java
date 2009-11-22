@@ -229,16 +229,16 @@ public class ArgumentParser {
 		parser.parse(empty);
 
 		if (string1.getValue() != null) {
-			throw new RuntimeException("Default value for string1 failed");
+			throw new IllegalArgumentException("Default value for string1 failed");
 		}
-		if (string3.getValue() != "value3") {
-			throw new RuntimeException("Default value for string3 failed");
+		if (!string3.getValue().equals("value3")) {
+			throw new IllegalArgumentException("Default value for string3 failed");
 		}
-		if (bool1.getValue() != false) {
-			throw new RuntimeException("Default value for bool1 failed");
+		if (bool1.getValue()) {
+			throw new IllegalArgumentException("Default value for bool1 failed");
 		}
 		if (n1.getValue() != null) {
-			throw new RuntimeException("Default value for n1 failed");
+			throw new IllegalArgumentException("Default value for n1 failed");
 		}
 
 		// ----------------------------------------------------------------------
@@ -248,19 +248,19 @@ public class ArgumentParser {
 
 		System.out.println("Test 02-001: Check string1");
 		if (!string1.getValue().equals("value1")) {
-			throw new RuntimeException("Parsing string1 failed");
+			throw new IllegalArgumentException("Parsing string1 failed");
 		}
-		if (string3.getValue() != "value3") {
-			throw new RuntimeException("Default value for string3 failed");
+		if (!string3.getValue().equals("value3")) {
+			throw new IllegalArgumentException("Default value for string3 failed");
 		}
-		if (bool1.getValue() != false) {
-			throw new RuntimeException("Default value for bool1 failed");
+		if (bool1.getValue()) {
+			throw new IllegalArgumentException("Default value for bool1 failed");
 		}
 		if (!n1.getValue().equals(new BigDecimal("3.14159"))) {
-			throw new RuntimeException("Default value for n1 failed");
+			throw new IllegalArgumentException("Default value for n1 failed");
 		}
 		if (!remaining.isEmpty()) {
-			throw new RuntimeException("Should be no remaining args");
+			throw new IllegalArgumentException("Should be no remaining args");
 		}
 
 		// ----------------------------------------------------------------------
@@ -270,23 +270,23 @@ public class ArgumentParser {
 
 		System.out.println("Test 02-001: Check string1");
 		if (!string1.getValue().equals("value1")) {
-			throw new RuntimeException("Parsing string1 failed");
+			throw new IllegalArgumentException("Parsing string1 failed");
 		}
 
 		System.out.println("Test 02-002: Check bool1");
 		if (!bool1.getValue()) {
-			throw new RuntimeException("bool1 should have been true");
+			throw new IllegalArgumentException("bool1 should have been true");
 		}
 
 		System.out.println("Test 02-003: Check remaining args");
 		if (!remaining.equals(Arrays.asList(new String[] { "-n2", "10",
 				"-string2", "value2" }))) {
-			throw new RuntimeException("Remaining args incorrect");
+			throw new IllegalArgumentException("Remaining args incorrect");
 		}
 
 		System.out.println("Test 02-004: Check string3");
 		if (!string3.getValue().equals("value3")) {
-			throw new RuntimeException("Default for string3 failed");
+			throw new IllegalArgumentException("Default for string3 failed");
 		}
 
 		// ----------------------------------------------------------------------
@@ -303,7 +303,7 @@ public class ArgumentParser {
 		if (!lp.getValue().equals(
 				Arrays.asList(new String[] { "-n2", "10", "-bool1", "-string2",
 						"value2" }))) {
-			throw new RuntimeException("List args incorrect");
+			throw new IllegalArgumentException("List args incorrect");
 		}
 	}
 }
