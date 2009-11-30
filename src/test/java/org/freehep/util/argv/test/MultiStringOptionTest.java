@@ -1,59 +1,73 @@
-// Copyright 2007, FreeHEP.
+// Copyright 2007-2009, FreeHEP.
 package org.freehep.util.argv.test;
 
-import java.util.Iterator;
-import java.util.List;
+import junit.framework.Assert;
 
 import org.freehep.util.argv.ArgumentFormatException;
 import org.freehep.util.argv.ArgumentParser;
 import org.freehep.util.argv.BooleanOption;
 import org.freehep.util.argv.MissingArgumentException;
 import org.freehep.util.argv.MultiStringOption;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
 /**
- * StringOption test.
- *
+ * MultiStringOption test.
+ * 
  * @author Mark Donszelmann
- * @version $Id: src/test/java/org/freehep/util/argv/test/MultiStringOptionTest.java 3519f271eb09 2007/03/21 21:58:27 duns $
- */ 
+ */
 public final class MultiStringOptionTest {
 
-	private MultiStringOptionTest() {
+	private BooleanOption help;
+	private MultiStringOption mso;
+	private ArgumentParser parser;
+
+	@Before
+	public void setup() {
+		help = new BooleanOption("-help", "-h", "Describe command line args",
+				true);
+
+		mso = new MultiStringOption("-I", "file", "Description of option");
+
+		parser = new ArgumentParser("StringOptionTest");
+		parser.add(help);
+		parser.add(mso);
 	}
-	
-    public static void main(String[] args) {
-        BooleanOption help = new BooleanOption("-help", "-h", "Describe command line args", true );
 
-        MultiStringOption mso =  new MultiStringOption("-I", "file", "Description of option" );
-        
-        ArgumentParser parser = new ArgumentParser("StringOptionTest");
-        parser.add( help );
-        parser.add( mso );
+	@Test
+	public void singleInclude() throws MissingArgumentException,
+			ArgumentFormatException {
+		parser.parse(new String[] { "-I", "include1" });
+		Assert.assertEquals(1, mso.getValue().size());
+		Assert.assertEquals("include1", mso.getValue().get(0));
+	}
 
-        List<String> extra = null;
-        try {
-            extra = parser.parse( args );
-            if (help.getValue()) {
-                parser.printUsage( System.out );
-                System.exit( 0 );
-            }
-        } catch (MissingArgumentException mae) {
-            System.out.println(mae.getMessage());
-            System.exit(1);
-        } catch (ArgumentFormatException afe) {
-            System.out.println(afe.getMessage());
-            System.exit(1);
-        }
-        
-        System.out.println("ArgvTest ok");
-        List<String> includes = mso.getValue();
-        if (includes != null) {
-        	for (Iterator<String> i=includes.iterator(); i.hasNext(); ) {
-                System.out.println("mso     = "+i.next());        		
-        	}
-        }
-        for (Iterator<String> i=extra.iterator(); i.hasNext(); ) {
-        	System.out.println("Extra: '"+i.next()+"'");
-        }
-    }
+	@Test(expected = MissingArgumentException.class)
+	public void singleIncludeMissing() throws MissingArgumentException,
+			ArgumentFormatException {
+		parser.parse(new String[] { "-I" });
+	}
+
+	@Test
+	public void dualInclude() throws MissingArgumentException,
+			ArgumentFormatException {
+		parser.parse(new String[] { "-I", "include1", "-I", "include2" });
+		Assert.assertEquals(2, mso.getValue().size());
+		Assert.assertEquals("include1", mso.getValue().get(0));
+		Assert.assertEquals("include2", mso.getValue().get(1));
+	}
+
+	@Test(expected = MissingArgumentException.class)
+	@Ignore
+	public void dualIncludeMissingFirst() throws MissingArgumentException,
+			ArgumentFormatException {
+		parser.parse(new String[] { "-I", "-I", "include2" });
+	}
+
+	@Test(expected = MissingArgumentException.class)
+	public void dualIncludeMissingSecond() throws MissingArgumentException,
+			ArgumentFormatException {
+		parser.parse(new String[] { "-I", "include1", "-I" });
+	}
 }

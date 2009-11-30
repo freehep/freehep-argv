@@ -1,60 +1,73 @@
-// Copyright 2007, FreeHEP.
+// Copyright 2007-2009, FreeHEP.
 package org.freehep.util.argv.test;
-
-import java.util.Iterator;
-import java.util.List;
 
 import org.freehep.util.argv.ArgumentFormatException;
 import org.freehep.util.argv.ArgumentParser;
 import org.freehep.util.argv.BooleanOption;
 import org.freehep.util.argv.MissingArgumentException;
 import org.freehep.util.argv.StringOption;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * StringOption test.
  *
  * @author Mark Donszelmann
- * @version $Id: src/test/java/org/freehep/util/argv/test/StringOptionTest.java 6f62868b5b67 2007/03/19 17:35:22 duns $
  */ 
 public final class StringOptionTest {
 
-	private StringOptionTest() {
-	}
+	private BooleanOption help;
+	private StringOption so1, so2, so3;
+	private ArgumentParser parser;
+	
+	@Before
+	public void setup() {
+        help = new BooleanOption("-help", "-h", "Describe command line args", true );
 
-    public static void main(String[] args) {
-        BooleanOption help = new BooleanOption("-help", "-h", "Describe command line args", true );
-
-        StringOption so1 =  new StringOption("-so1", "option", "Description of option" );
-        StringOption so2 =  new StringOption("-so2", "option", "default", "Description of option" );
-        StringOption so3 =  new StringOption("-so3", "-s", "option", "default", "Description of option" );
+        so1 =  new StringOption("-so1", "option", "Description of option" );
+        so2 =  new StringOption("-so2", "option", "default", "Description of option" );
+        so3 =  new StringOption("-so3", "-s", "option", "default", "Description of option" );
         
-        ArgumentParser parser = new ArgumentParser("StringOptionTest");
+        parser = new ArgumentParser("StringOptionTest");
         parser.add( help );
         parser.add( so1 );
         parser.add( so2 );
-        parser.add( so3 );
+        parser.add( so3 );		
+	}
+	
+	@Test
+    public void testS01() throws MissingArgumentException, ArgumentFormatException {		
+		parser.parse(new String[] {"-so1", "so1"});
+		Assert.assertEquals("so1", so1.getValue());		
+    }
 
-        List<String> extra = null;
-        try {
-            extra = parser.parse( args );
-            if (help.getValue()) {
-                parser.printUsage( System.out );
-                System.exit( 0 );
-            }
-        } catch (MissingArgumentException mae) {
-            System.out.println(mae.getMessage());
-            System.exit(1);
-        } catch (ArgumentFormatException afe) {
-            System.out.println(afe.getMessage());
-            System.exit(1);
-        }
-        
-        System.out.println("ArgvTest ok");
-        System.out.println("so1     = "+so1.getValue());
-        System.out.println("so2     = "+so2.getValue());
-        System.out.println("so3     = "+so3.getValue());
-        for (Iterator<String> i=extra.iterator(); i.hasNext(); ) {
-        	System.out.println("Extra: '"+i.next()+"'");
-        }
+	@Test (expected=MissingArgumentException.class)
+    public void testS01missingArgument() throws MissingArgumentException, ArgumentFormatException {		
+		parser.parse(new String[] {"-so1"});
+    }
+
+	@Test
+    public void testS02() throws MissingArgumentException, ArgumentFormatException {		
+		parser.parse(new String[] {"-so2", "so2"});
+		Assert.assertEquals("so2", so2.getValue());		
+    }
+
+	@Test
+    public void testS02defaultValue() throws MissingArgumentException, ArgumentFormatException {		
+		parser.parse(new String[] {});
+		Assert.assertEquals("default", so2.getValue());		
+    }
+	
+	@Test
+    public void testS03() throws MissingArgumentException, ArgumentFormatException {		
+		parser.parse(new String[] {"-so3", "so3"});
+		Assert.assertEquals("so3", so3.getValue());		
+    }
+
+	@Test
+    public void testS03short() throws MissingArgumentException, ArgumentFormatException {		
+		parser.parse(new String[] {"-s", "so3"});
+		Assert.assertEquals("so3", so3.getValue());		
     }
 }
