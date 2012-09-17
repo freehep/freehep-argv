@@ -4,7 +4,7 @@
 
 	<groupId>org.freehep</groupId>
 	<artifactId>freehep-argv</artifactId>
-	<version>2.1.1</version>
+	<version>2.2-SNAPSHOT</version>
 
 	<name>FreeHEP ArgV</name>
 	<description>FreeHEP Command Line Argument Parsing</description>
@@ -53,7 +53,7 @@
 		<connection>scm:git:git://github.com/freehep/freehep-argv.git</connection>
 		<developerConnection>scm:git:git@github.com:freehep/freehep-argv.git</developerConnection>
 		<url>http://github.com/freehep/freehep-argv</url>
-		<tag>freehep-argv-2.1.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
